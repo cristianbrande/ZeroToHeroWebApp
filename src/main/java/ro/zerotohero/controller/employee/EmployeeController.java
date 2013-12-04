@@ -19,14 +19,9 @@ public class EmployeeController {
 		
 		ArrayList<EmployeeEntity> employeeList = new ArrayList<EmployeeEntity>();
 		
-		for (int i =0; i< 3; i++){
-			EmployeeEntity employee = new EmployeeEntity();
-			employee.setEmail("mail" + i);
-			employee.setFirstName("first" + i);
-			employee.setLastName("last" + i);
-			employee.setPassword("pass" + i);
-
-			employeeList.add(employee);
+		for (int i = 0; i < 8; i++){
+			employeeList.add(new EmployeeEntity("first_" + i, "last_" + i,
+					"email_" + i + "@example.com", "password_" + i));
 		}
 				
 		model.addAttribute("message", "Application Index Employee");

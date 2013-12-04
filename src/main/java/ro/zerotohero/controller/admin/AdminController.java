@@ -19,15 +19,15 @@ public class AdminController {
 
 		ArrayList<AdminEntity> adminList = new ArrayList<AdminEntity>();
 		
-		for (int i =0; i< 3; i++){
+		for (int i = 0; i< 5; i++){
 			AdminEntity admin = new AdminEntity();
-			admin.setEmail("mail" + i);
-			admin.setFirstName("first" + i);
-			admin.setLastName("last" + i);
-			admin.setPassword("pass" + i);
-
+			admin.setFirstName("first_" + i);
+			admin.setLastName("last_" + i);
+			admin.setEmail("email_" + i + "@example.com");
+			admin.setPassword("password_" + i);
 			adminList.add(admin);
 		}
+				
 		
 		model.addAttribute("message", "Application Index Admin");
 		model.addAttribute("adminList", adminList);
