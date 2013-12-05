@@ -13,8 +13,7 @@
 		</thead>
 		<c:forEach var="rol" varStatus="status" items="${roleList}">
 			<tr>
-				<td>${rol.getName()}</td>
-				<td>${rol.getIndex()}</td>
+				<td>${rol.name}</td>
 			</tr>
 		</c:forEach>
 	</table>
