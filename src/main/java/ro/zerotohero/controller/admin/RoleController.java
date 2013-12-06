@@ -1,4 +1,4 @@
-package ro.zerotohero.controller.role;
+package ro.zerotohero.controller.admin;
 
 import java.util.List;
 
@@ -13,15 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ro.zerotohero.model.RoleEntity;
-import ro.zerotohero.service.EmployeeService;
 import ro.zerotohero.service.RoleService;
 
 @Controller
 @RequestMapping("/admin")
 public class RoleController {
-
-	@Autowired
-	private EmployeeService employeeService;
 	
 	@Autowired
 	private RoleService roleService;
@@ -76,7 +72,16 @@ public class RoleController {
 		return "admin/newRole";
 	}
 	
-	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(ModelMap model, HttpServletRequest request,
+			HttpServletResponse response, @PathVariable("id") int id) {
+
+		roleService.delete(roleService.findById(id));
+		List<RoleEntity > roleList = roleService.findAll();
+		model.addAttribute("employeeList", roleList);
+
+		return "redirect:/admin/list";
+	}
 	
 
 }

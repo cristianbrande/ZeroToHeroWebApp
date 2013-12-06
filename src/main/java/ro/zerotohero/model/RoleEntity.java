@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -50,7 +51,8 @@ public class RoleEntity implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue ( strategy = GenerationType.AUTO)
+	@GeneratedValue ( strategy = GenerationType.SEQUENCE, generator = "ROLE_SEQ")
+	@SequenceGenerator ( name = "ROLE_SEQ", sequenceName = "ROLE_SEQ", allocationSize = 1)
 	@Column(name = "ROLE_ID", unique = true, nullable = false)
 	public int getRoleId() {
 		return roleId;

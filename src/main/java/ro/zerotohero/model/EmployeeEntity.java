@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -73,7 +74,8 @@ public class EmployeeEntity implements Serializable {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue ( strategy = GenerationType.SEQUENCE, generator = "EMPLOYEE_SEQ")
+	@SequenceGenerator ( name = "EMPLOYEE_SEQ", sequenceName = "EMPLOYEE_SEQ", allocationSize = 1)
 	@Column(name = "EMPLOYEE_ID", unique=true, nullable=false)
 	public int getEmployeeId() {
 		return employeeId;
